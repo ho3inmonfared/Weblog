@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>
       {% block title %}
+
       {% endblock %}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,12 +99,110 @@
         }
       }
       
-      footer {
-        border-top: 1px solid #1e293b;
-        margin-top: 60px;
-        padding: 20px 0;
+      .about-box {
+        background: linear-gradient(145deg, #111827, #0f172a);
+        border-radius: 24px;
+        animation: fadeUp 0.7s ease forwards;
+      }
+      
+      .about-title {
+        font-weight: 800;
+        color: #38bdf8;
+      }
+      
+      .about-text {
+        color: #cbd5f5;
+        line-height: 1.9;
+        font-size: 0.95rem;
+      }
+      
+      .skill-badge {
+        background-color: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-weight: 500;
+      }
+      
+      .about-visual {
+        position: relative;
+        width: 260px;
+        height: 260px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .circle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle at top, #38bdf8, transparent 70%);
+        opacity: 0.35;
+        animation: pulse 3s infinite ease-in-out;
+      }
+      
+      .about-highlight {
         text-align: center;
-        color: #64748b;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #e5e7eb;
+        z-index: 2;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 0.45;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.3;
+        }
+      }
+      .site-footer {
+        background: linear-gradient(180deg, #0f172a, #020617);
+        border-top: 1px solid #1e293b;
+        padding: 40px 0 30px;
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+      
+      .footer-brand {
+        color: #38bdf8;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+      
+      .footer-desc {
+        max-width: 280px;
+        line-height: 1.7;
+      }
+      
+      .footer-credit {
+        margin: 0;
+        font-weight: 500;
+      }
+      
+      .footer-credit strong {
+        color: #e5e7eb;
+      }
+      
+      .footer-copy {
+        margin-bottom: 10px;
+      }
+      
+      .footer-line {
+        width: 60px;
+        height: 2px;
+        background-color: #38bdf8;
+        margin-inline-start: auto;
       }
     </style>
   </head>
@@ -119,13 +218,13 @@
         <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav me-auto gap-3">
             <li class="nav-item">
-              <a class="nav-link text-light active" href="#">خانه</a>
+              <a class="nav-link text-light active" href="{% url 'post_list_page' %}">خانه</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="#">جدیدترین پست ها</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">درباره ما</a>
+              <a class="nav-link text-light" href="{% url 'about_us_page' %}">درباره ما</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="#">تماس</a>
@@ -139,8 +238,31 @@
 
     {% endblock %}
 
-    <footer>
-      طراحی شده توسط <strong>حسین منفرد</strong> با عشق 💖 و چت جی پی تی 🤖
+    <!-- this is footer -->
+    <footer class="site-footer mt-5">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <!-- Brand -->
+          <div class="col-md-4 text-center text-md-start">
+            <h5 class="footer-brand">MyBlog</h5>
+            <p class="footer-desc">جایی برای ساخت، یادگیری و به اشتراک گذاشتن تجربه‌های واقعی توسعه وب</p>
+          </div>
+
+          <!-- Credits -->
+          <div class="col-md-4 text-center">
+            <p class="footer-credit">
+              طراحی شده توسط <strong>حسین منفرد</strong>
+            </p>
+            <p class="footer-credit">با عشق 💖 و چت‌جی‌پی‌تی 🤖</p>
+          </div>
+
+          <!-- Social / Copy -->
+          <div class="col-md-4 text-center text-md-end">
+            <p class="footer-copy">© 2025 — همه حقوق محفوظ است</p>
+            <div class="footer-line"></div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

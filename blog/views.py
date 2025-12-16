@@ -11,4 +11,8 @@ def post_list_view(request):
     }
     
     return render(request,'blog/post_list.html',context)
+
+def about_us_view(request):
+    
+    return render(request,'blog/about_us.html',{})
     
