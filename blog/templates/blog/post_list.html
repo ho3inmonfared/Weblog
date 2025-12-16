@@ -21,7 +21,7 @@
             <p class="post-desc">{{ post.description|truncatewords:5 }}</p>
             <div class="d-flex justify-content-between align-items-center mt-4">
               <span class="author">نویسنده: {{ post.author }}</span>
-              <a href="#" class="btn btn-sm btn-outline-info">مشاهده</a>
+              <a href="{% url 'post_detail_page' post.pk %}" class="btn btn-sm btn-outline-info">مشاهده</a>
             </div>
           </div>
         </div>

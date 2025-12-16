@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% block title %}
+  بیشتر
+{% endblock %}
+{% block content %}
+  <section class="container my-5">
+    <div class="post-detail-box p-4 p-lg-5 rounded-4 shadow-sm">
+      <!-- Title -->
+      <h1 class="post-detail-title mb-3">{{ post.title }}</h1>
+
+      <!-- Meta -->
+      <div class="post-meta d-flex flex-wrap align-items-center gap-3 mb-4">
+        <span class="badge badge-published">{{ post.get_status_display }}</span>
+        <span class="author">نویسنده: {{ post.author }}</span>
+        <span class="date">تاریخ انتشار: {{ post.created_at|date:'Y/m/d' }}</span>
+      </div>
+
+      <!-- Content -->
+      <div class="post-detail-content">
+        <p>{{ post.description }}</p>
+      </div>
+    </div>
+  </section>
+  <br><br>
+{% endblock %}

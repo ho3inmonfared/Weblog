@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from . import models
+
 
 
 def post_list_view(request):
@@ -9,8 +10,16 @@ def post_list_view(request):
     context={
         'post_list':posts
     }
-    
     return render(request,'blog/post_list.html',context)
+
+def post_detail_view(request,pk):
+    
+    post=get_object_or_404(models.Post,pk=pk)
+    context={
+        'post':post
+    }
+    return render(request,'blog/post_detail.html',context)
+
 
 def about_us_view(request):
     
