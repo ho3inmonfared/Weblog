@@ -1,0 +1,81 @@
+{% extends '_base.html' %}
+{% block title %}
+  تماس با ما
+{% endblock %}
+{% block content %}
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section" style="background: #0f172a; color: #f8fafc; padding: 80px 0; position: relative; overflow: hidden;">
+    <!-- Animated background circles -->
+    <div style="position:absolute; width:200px; height:200px; border-radius:50%; background: rgba(59,130,246,0.2); top:-50px; left:-50px; animation: float 8s ease-in-out infinite;"></div>
+    <div style="position:absolute; width:150px; height:150px; border-radius:50%; background: rgba(16,185,129,0.2); bottom:-50px; right:-50px; animation: float 6s ease-in-out infinite alternate;"></div>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+      <div class="row" style="display:flex; flex-wrap:wrap; gap:40px;">
+        <!-- Contact Info -->
+        <div class="col-info" style="flex:1; min-width:300px;">
+          <h2 style="font-size:2.5rem; margin-bottom:20px;">تماس با ما</h2>
+          <p style="margin-bottom:30px; line-height:1.6;">هر سوال، پیشنهاد یا همکاری دارید می‌تونید از طریق فرم زیر یا اطلاعات تماس با ما در ارتباط باشید. ما سریع پاسخ می‌دیم!</p>
+
+          <div style="display:flex; flex-direction:column; gap:15px; font-size:1.1rem;">
+            <div>
+              <strong>📍 آدرس:</strong> خیابان نمونه، شهر نمونه، ایران
+            </div>
+            <div>
+              <strong>📧 ایمیل:</strong> ho3inmonfared@gmail.com
+            </div>
+            <div>
+              <strong>📞 تلفن:</strong> +98 936 521 5508
+            </div>
+            <div>
+              <strong>🌐 وبسایت:</strong> www.hosseinmonfared.com
+            </div>
+          </div>
+
+          <div style="margin-top:30px; display:flex; gap:20px;">
+            <a href="#" style="color:#3b82f6; font-size:1.5rem; transition: transform 0.3s;">🐦</a>
+            <a href="#" style="color:#3b82f6; font-size:1.5rem; transition: transform 0.3s;">📘</a>
+            <a href="#" style="color:#3b82f6; font-size:1.5rem; transition: transform 0.3s;">📸</a>
+          </div>
+        </div>
+
+        <!-- Contact Form Dark -->
+        <div class="col-form" style="flex:1; min-width:300px; background: #0f172a; padding:40px; border-radius:15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #1e293b;">
+          <form action="#" method="POST" style="display:flex; flex-direction:column; gap:20px;">
+            <input type="text" name="name" placeholder="نام شما" required style="padding:15px; border-radius:10px; border:1px solid #334155; outline:none; font-size:1rem; background:#1e293b; color:#f8fafc;" />
+
+            <input type="email" name="email" placeholder="ایمیل شما" required style="padding:15px; border-radius:10px; border:1px solid #334155; outline:none; 
+         font-size:1rem; background:#1e293b; color:#f8fafc; direction: rtl; text-align: right;" />
+
+            <input type="text" name="subject" placeholder="موضوع" required style="padding:15px; border-radius:10px; border:1px solid #334155; outline:none; font-size:1rem; background:#1e293b; color:#f8fafc;" />
+
+            <textarea name="message" rows="5" placeholder="پیام شما" required style="padding:15px; border-radius:10px; border:1px solid #334155; outline:none; font-size:1rem; background:#1e293b; color:#f8fafc;"></textarea>
+
+            <button type="submit" style="padding:15px; border:none; border-radius:10px; background: #3b82f6; color:white; font-size:1rem; cursor:pointer; transition: transform 0.3s, background 0.3s;">ارسال پیام</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animations -->
+  <style>
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      50% {
+        transform: translateY(20px) translateX(20px);
+      }
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+    
+    button:hover {
+      transform: scale(1.05);
+      background: #2563eb;
+    }
+    
+    
+  </style>
+{% endblock %}

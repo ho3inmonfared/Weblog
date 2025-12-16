@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+{% block title %}
+جدیدترین پست ها
+{% endblock %}
+{% block content %}
+  <!-- Hero -->
+  <section class="hero container">
+    <h1>لیست جدیدترین پست ها</h1>
+    <p class="mt-3">جدیدترین مقالات برنامه‌نویسی، تکنولوژی و تجربه‌های واقعی توسعه نرم‌افزار</p>
+  </section>
+
+  <!-- Posts -->
+  <section class="container mt-5">
+    <div class="row g-4">
+      {% for post in post_list %}
+        <!-- Post -->
+        <div class="col-md-6 col-lg-4">
+          <div class="post-card">
+            <span class="badge badge-published mb-2">{{ post.get_status_display }}</span>
+            <h5 class="post-title mt-2">{{ post.title }}</h5>
+            <p class="post-desc">{{ post.description|truncatewords:5 }}</p>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <span class="author">نویسنده: {{ post.author }}</span>
+              <a href="{% url 'post_detail_page' post.pk %}" class="btn btn-sm btn-outline-info">مشاهده</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

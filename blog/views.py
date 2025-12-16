@@ -20,8 +20,19 @@ def post_detail_view(request,pk):
     }
     return render(request,'blog/post_detail.html',context)
 
+def new_post_list_view(request):
+    
+    posts=models.Post.objects.filter(status='pub').order_by('-created_at')[:6]
+    context={
+        'post_list':posts
+    }
+    return render(request,'blog/new_post_list.html',context)
 
 def about_us_view(request):
     
     return render(request,'blog/about_us.html',{})
+
+def contact_view(request):
+    
+    return render(request,'blog/contact.html',{})
     
