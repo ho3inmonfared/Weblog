@@ -1,6 +1,6 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from . import models
-
+from . import forms
 
 
 def post_list_view(request):
@@ -36,3 +36,18 @@ def contact_view(request):
     
     return render(request,'blog/contact.html',{})
     
+def add_new_post_view(request):
+    
+    if request.method == "POST":
+        form=forms.PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form=forms.PostForm()
+            return redirect('post_list_page')
+    else:
+        form=forms.PostForm()
+        
+    context={
+        'form':form
+    }
+    return render(request,'blog/add_new_post_page.html',context)

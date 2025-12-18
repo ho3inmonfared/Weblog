@@ -1,0 +1,89 @@
+{% extends '_base.html' %}
+{% block title %}
+  پست جدید
+{% endblock %}
+{% block content %}
+  <section class="container my-5">
+    <div class="new-post-box p-4 p-lg-5">
+      <h2 class="new-post-title mb-4">ایجاد پست جدید</h2>
+
+      <form method="post" class="new-post-form">
+        {% csrf_token %}
+        {{ form }}
+
+        <!-- Submit -->
+        <button type="submit" class="btn submit-btn w-100">انتشار پست 🚀</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- this is more style for just this page -->
+  <style>
+    .new-post-box {
+      background: linear-gradient(145deg, #111827, #0f172a);
+      border-radius: 24px;
+      max-width: 700px;
+      margin: auto;
+      animation: fadeUp 0.7s ease forwards;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    }
+    
+    .new-post-title {
+      font-weight: 800;
+      color: #38bdf8;
+      text-align: center;
+    }
+    
+    .new-post-form .form-label {
+      color: #cbd5f5;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .custom-input {
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      color: #e5e7eb;
+      border-radius: 14px;
+      padding: 12px 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .custom-input::placeholder {
+      color: #64748b;
+    }
+    
+    .custom-input:focus {
+      background-color: #020617;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+      color: #fff;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 12px;
+      transition: all 0.4s ease;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+    }
+    
+    /* Animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+{% endblock %}
