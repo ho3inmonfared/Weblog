@@ -20,6 +20,46 @@
         <p>{{ post.description }}</p>
       </div>
     </div>
+    <!-- Actions -->
+    <div class="post-actions d-flex justify-content-end gap-3 mt-5">
+      <a href="{% url 'post_update_page' post.pk %}" class="btn action-btn edit-btn">✏️ ویرایش</a>
+
+      <a href="#" class="btn action-btn delete-btn">🗑️ حذف</a>
+    </div>
   </section>
-  <br><br>
+  <br /><br />
+  <style>
+    .post-actions {
+      border-top: 1px solid #1e293b;
+      padding-top: 25px;
+    }
+    
+    .action-btn {
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-weight: 600;
+      transition: all 0.35s ease;
+      font-size: 0.9rem;
+    }
+    
+    .edit-btn {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: #020617;
+    }
+    
+    .edit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+    }
+    
+    .delete-btn {
+      background: linear-gradient(90deg, #ef4444, #dc2626);
+      color: #fff;
+    }
+    
+    .delete-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+    }
+  </style>
 {% endblock %}

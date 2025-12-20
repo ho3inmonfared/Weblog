@@ -51,3 +51,13 @@ def add_new_post_view(request):
         'form':form
     }
     return render(request,'blog/add_new_post_page.html',context)
+
+def post_update_view(request,pk):
+    post=get_object_or_404(models.Post,pk=pk)
+    form=forms.PostForm(request.POST or None,instance=post)
+    
+    if form.is_valid():
+        form.save()
+        return redirect('post_list_page')
+    
+    return render(request,'blog/post_update_page.html',{'form':form})
