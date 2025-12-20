@@ -1,0 +1,116 @@
+{% extends '_base.html' %}
+{% block title %}
+  تأیید حذف
+{% endblock %}
+{% block content %}
+<br><br><br>
+  <section class="container my-5">
+    <div class="delete-box p-4 p-lg-5 text-center">
+      <!-- Icon -->
+      <div class="delete-icon mb-3">🗑️</div>
+
+      <!-- Title -->
+      <h2 class="delete-title mb-3">آیا مطمئن هستید؟</h2>
+
+      <!-- Description -->
+      <p class="delete-text mb-4">
+        شما در حال حذف این محتوا هستید. این عملیات <strong>قابل بازگشت نیست</strong>
+        و پس از تأیید، پست برای همیشه حذف خواهد شد.
+      </p>
+
+      <!-- Actions -->
+      <form method="post" class="d-flex justify-content-center gap-3 flex-wrap">
+        {% csrf_token %}
+
+        <button type="submit" class="btn confirm-btn">✅ بله، حذف شود</button>
+
+        <a href="{% url 'post_detail_page' post.id %}" class="btn cancel-btn">❌ انصراف</a>
+      </form>
+    </div>
+  </section>
+  <style>
+    .delete-box {
+      background: linear-gradient(145deg, #111827, #0f172a);
+      border-radius: 24px;
+      max-width: 600px;
+      margin: auto;
+      animation: fadeUp 0.7s ease forwards;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+    }
+    
+    .delete-icon {
+      font-size: 3rem;
+      animation: shake 1.2s ease-in-out infinite;
+    }
+    
+    .delete-title {
+      color: #ef4444;
+      font-weight: 800;
+    }
+    
+    .delete-text {
+      color: #cbd5f5;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    
+    .confirm-btn {
+      background: linear-gradient(90deg, #ef4444, #dc2626);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 26px;
+      font-weight: 700;
+      transition: all 0.35s ease;
+    }
+    
+    .confirm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(239, 68, 68, 0.45);
+    }
+    
+    .cancel-btn {
+      background: transparent;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      border-radius: 999px;
+      padding: 12px 26px;
+      font-weight: 600;
+      transition: all 0.35s ease;
+    }
+    
+    .cancel-btn:hover {
+      background-color: rgba(56, 189, 248, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(4deg);
+      }
+      50% {
+        transform: rotate(-4deg);
+      }
+      75% {
+        transform: rotate(4deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  </style>
+{% endblock %}

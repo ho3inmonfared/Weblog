@@ -24,7 +24,7 @@
     <div class="post-actions d-flex justify-content-end gap-3 mt-5">
       <a href="{% url 'post_update_page' post.pk %}" class="btn action-btn edit-btn">✏️ ویرایش</a>
 
-      <a href="#" class="btn action-btn delete-btn">🗑️ حذف</a>
+      <a href="{% url 'post_delete_page' post.pk %}" class="btn action-btn delete-btn">🗑️ حذف</a>
     </div>
   </section>
   <br /><br />
