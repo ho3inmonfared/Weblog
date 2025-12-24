@@ -1,0 +1,214 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+  ثبت نام
+{% endblock %}
+{% block content %}
+  <section class="container login-section">
+    <div class="login-wrapper">
+      <!-- Glow Effect -->
+      <div class="login-glow"></div>
+
+      <div class="login-card">
+        <h2 class="login-title">ثبت نام</h2>
+        <p class="login-desc">یک حساب کاربری بسازید و به دنیای ما بپیوندید!</p>
+
+        <form method="post" class="login-form">
+          {% csrf_token %}
+
+          {% if form.non_field_errors %}
+            <div class="field-errors mb-3">
+              {% for error in form.non_field_errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label class="form-label" for="{{ form.username.id_for_label }}">نام کاربری</label>
+            {{ form.username|add_class:'login-input' }}
+            {% if form.username.errors %}
+              <div class="field-errors animated-error">
+                {% for error in form.username.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label" for="{{ form.password1.id_for_label }}">رمز عبور</label>
+            {{ form.password1|add_class:'login-input' }}
+            {% if form.password1.errors %}
+              <div class="field-errors animated-error">
+                {% for error in form.password1.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Password Confirm -->
+          <div class="mb-3">
+            <label class="form-label" for="{{ form.password2.id_for_label }}">تکرار رمز عبور</label>
+            {{ form.password2|add_class:'login-input' }}
+            {% if form.password2.errors %}
+              <div class="field-errors animated-error">
+                {% for error in form.password2.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
+          <button type="submit" class="login-btn">ثبت نام</button>
+        </form>
+
+        <p class="login-link mt-3">
+          قبلاً حساب دارید؟ <a href="{% url 'login' %}">ورود</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Reuse Login Styles */
+    .login-section {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+    }
+    .login-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .login-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+      animation: pulse 3s infinite ease-in-out;
+    }
+    .login-card {
+      position: relative;
+      background: linear-gradient(145deg, #111827, #0f172a);
+      border-radius: 22px;
+      padding: 35px 30px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      text-align: center;
+    }
+    .login-title {
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .login-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 28px;
+    }
+    .login-input {
+      width: 100%;
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      color: #e5e7eb;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    .login-input::placeholder {
+      color: #64748b;
+    }
+    .login-input:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+    .login-btn {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 12px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      transition: all 0.35s ease;
+    }
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.45);
+    }
+    .field-errors {
+      color: #f87171;
+      font-size: 0.82rem;
+      margin-top: 4px;
+      text-align: right;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .animated-error span {
+      display: block;
+    }
+    .field-errors.show {
+      opacity: 1;
+      max-height: 500px;
+    }
+    .login-link {
+      font-size: 0.87rem;
+      color: #94a3b8;
+    }
+    .login-link a {
+      color: #38bdf8;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes pulse {
+      0% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0.3;
+      }
+    }
+  </style>
+
+  <script>
+    // Show errors with animation after page load if exist
+    document.addEventListener('DOMContentLoaded', function () {
+      const errorBoxes = document.querySelectorAll('.field-errors')
+      errorBoxes.forEach((box) => {
+        if (box.innerHTML.trim() !== '') {
+          box.classList.add('show')
+        }
+      })
+    })
+  </script>
+{% endblock %}
