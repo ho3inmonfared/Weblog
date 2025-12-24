@@ -258,6 +258,77 @@
           transform: translateY(0);
         }
       }
+      /* User Nav Box */
+      .user-nav-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(56, 189, 248, 0.12);
+        padding: 6px 10px 6px 6px;
+        border-radius: 999px;
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        animation: fadeUp 0.5s ease;
+      }
+      /* login btn */
+      .login-nav-btn {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: #020617;
+        background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+        transition: all 0.3s ease;
+      }
+      
+      .login-nav-btn:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.45);
+      }
+      
+      /* Welcome */
+      .welcome-text {
+        font-size: 0.8rem;
+        color: #cbd5f5;
+        white-space: nowrap;
+      }
+      
+      .welcome-text strong {
+        color: #38bdf8;
+        font-weight: 700;
+      }
+      
+      /* Logout */
+      .logout-form {
+        margin: 0;
+      }
+      
+      .logout-btn {
+        border: none;
+        padding: 6px 16px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+      
+      .logout-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(239, 68, 68, 0.45);
+      }
+      
+      /* Mobile */
+      @media (max-width: 991px) {
+        .user-nav-box {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
     </style>
   </head>
 
@@ -287,6 +358,23 @@
               <a class="nav-link text-light" href="{% url 'contact_page' %}">تماس</a>
             </li>
           </ul>
+          <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+            {% if user.is_authenticated %}
+              <div class="user-nav-box">
+                <span class="welcome-text">
+                  خوش آمدید،
+                  <strong>{{ user.username }}</strong>
+                </span>
+
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                  {% csrf_token %}
+                  <button type="submit" class="logout-btn">خروج</button>
+                </form>
+              </div>
+            {% else %}
+              <a href="{% url 'login' %}" class="login-nav-btn">ورود و ثبت نام </a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>

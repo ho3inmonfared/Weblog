@@ -1,0 +1,133 @@
+{% extends "_base.html" %}
+{% block title %}خروج{% endblock title %}
+{% block content %}
+
+<section class="container logout-section">
+  <div class="logout-wrapper">
+
+    <!-- Glow -->
+    <div class="logout-glow"></div>
+
+    <div class="logout-card">
+      <h2 class="logout-title">با موفقیت خارج شدید</h2>
+      <p class="logout-desc">
+        شما از حساب کاربری خود خارج شدید.  
+        می‌توانید دوباره وارد شوید یا به صفحه اصلی بازگردید.
+      </p>
+
+      <div class="logout-actions">
+        <a href="{% url 'login' %}" class="logout-btn primary">
+          ورود مجدد
+        </a>
+        <a href="{% url 'post_list_page' %}" class="logout-btn secondary">
+          صفحه اصلی
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.logout-section {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-wrapper {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.logout-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(circle, rgba(56,189,248,0.22), transparent 70%);
+  filter: blur(45px);
+  z-index: 0;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.logout-card {
+  position: relative;
+  background: linear-gradient(145deg, #111827, #0f172a);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 35px 80px rgba(0,0,0,0.55);
+  z-index: 1;
+}
+
+.logout-title {
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+.logout-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.logout-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.logout-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+
+.logout-btn.primary {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  color: #020617;
+}
+
+.logout-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.45);
+}
+
+.logout-btn.secondary {
+  background: transparent;
+  border: 1px solid #1e293b;
+  color: #e5e7eb;
+}
+
+.logout-btn.secondary:hover {
+  background-color: #020617;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+</style>
+
+{% endblock content %}

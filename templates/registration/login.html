@@ -1,0 +1,182 @@
+{% extends '_base.html' %}
+{% block title %}
+  ورود
+{% endblock %}
+{% block content %}
+  <section class="container login-section">
+    <div class="login-wrapper">
+      <!-- Glow Effect -->
+      <div class="login-glow"></div>
+
+      <div class="login-card">
+        <h2 class="login-title">ورود</h2>
+        <p class="login-desc">برای ادامه وارد حساب خود شوید</p>
+
+        <form method="post">
+          {% csrf_token %}
+          {% if form.errors %}
+            <div class="login-error mb-3 text-danger">نام کاربری یا رمز عبور اشتباه است</div>
+          {% endif %}
+
+          <div class="mb-3">
+            <input type="text" name="username" class="login-input" placeholder="نام کاربری" />
+          </div>
+
+          <div class="mb-4">
+            <input type="password" name="password" class="login-input" placeholder="رمز عبور" />
+          </div>
+
+          <button type="submit" class="login-btn">ورود به حساب</button>
+          <div class="login-footer mt-4">
+            <span>حساب کاربری نداری؟</span>
+            <a href="#">ثبت‌نام کن</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Error */
+    .login-error {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fecaca;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      animation: fadeUp 0.4s ease;
+    }
+    
+    /* Footer */
+    .login-footer {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+    
+    .login-footer a {
+      margin-right: 6px;
+      color: #38bdf8;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Section */
+    .login-section {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Wrapper */
+    .login-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    
+    /* Glow */
+    .login-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+      animation: pulse 3s infinite ease-in-out;
+    }
+    
+    /* Card */
+    .login-card {
+      position: relative;
+      background: linear-gradient(145deg, #111827, #0f172a);
+      border-radius: 22px;
+      padding: 35px 30px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      text-align: center;
+    }
+    
+    /* Title */
+    .login-title {
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    
+    /* Desc */
+    .login-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 28px;
+    }
+    
+    /* Inputs */
+    .login-input {
+      width: 100%;
+      background-color: #020617;
+      border: 1px solid #1e293b;
+      color: #e5e7eb;
+      padding: 12px 14px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .login-input::placeholder {
+      color: #64748b;
+    }
+    
+    .login-input:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+    
+    /* Button */
+    .login-btn {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 12px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: #020617;
+      transition: all 0.35s ease;
+    }
+    
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.45);
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0.3;
+      }
+    }
+  </style>
+{% endblock %}
