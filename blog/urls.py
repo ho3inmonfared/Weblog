@@ -3,13 +3,13 @@ from . import views
 
 
 urlpatterns=[
-    path('',views.post_list_view,name='post_list_page'),
-    path('detail/<int:pk>',views.post_detail_view,name='post_detail_page'),
-    path('new_post/',views.new_post_list_view,name='new_post_list_page'),
-    path('about_us/',views.about_us_view,name='about_us_page'),
-    path('contact/',views.contact_view,name='contact_page'),
-    path('add_post/',views.add_new_post_view,name='add_new_post_page'),
-    path('<int:pk>/update/',views.post_update_view,name='post_update_page'),
-    path('<int:pk>/delete/',views.post_delete_view,name='post_delete_page')
+    path('',views.PostListView.as_view(),name='post_list_page'),
+    path('detail/<int:pk>',views.PostDetailView.as_view(),name='post_detail_page'),
+    path('new_post/',views.NewPostListView.as_view(),name='new_post_list_page'),
+    path('about_us/',views.AboutUsView.as_view(),name='about_us_page'),
+    path('contact/',views.ContactView.as_view(),name='contact_page'),
+    path('add_post/',views.AddNewPostView.as_view(),name='add_new_post_page'),
+    path('<int:pk>/update/',views.PostUpdateView.as_view(),name='post_update_page'),
+    path('<int:pk>/delete/',views.PostDeleteView.as_view(),name='post_delete_page'),
     
 ]
